@@ -428,3 +428,87 @@ Processing PagesController#show (for 127.0.0.1 at 2010-08-12 12:16:44) [GET]
 Rendering template within layouts/application
 Rendering pages/show
 Completed in 63ms (View: 29, DB: 21) | 200 OK [http://localhost/pages/1]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (11.8ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreatePages (20100812182537)
+Migrating to CreateSlugs (20100812192026)
+  [4;35;1mSQL (136.3ms)[0m   [0mCREATE TABLE `slugs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `sluggable_id` int(11), `sequence` int(11) DEFAULT 1 NOT NULL, `sluggable_type` varchar(40), `scope` varchar(255), `created_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `slugs`[0m
+  [4;35;1mSQL (248.4ms)[0m   [0mCREATE INDEX `index_slugs_on_sluggable_id` ON `slugs` (`sluggable_id`)[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `slugs`[0m
+  [4;35;1mSQL (113.2ms)[0m   [0mCREATE UNIQUE INDEX `index_slugs_on_n_s_s_and_s` ON `slugs` (`name`, `sluggable_type`, `sequence`, `scope`)[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100812192026')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mdescribe `pages`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `pages`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `slugs`[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mdescribe `slugs`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW KEYS FROM `slugs`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSlug Load (0.3ms)[0m   [0mSELECT * FROM `slugs` WHERE (sluggable_type = 'Page') [0m
+  [4;36;1mPage Columns (7.5ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Update (0.5ms)[0m   [0mUPDATE `pages` SET cached_slug = NULL [0m
+  [4;36;1mSlug Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `slugs`[0m
+  [4;35;1mPage Load IDs For Limited Eager Loading (23.1ms)[0m   [0mSELECT DISTINCT `pages`.id FROM `pages` LEFT OUTER JOIN `slugs` ON `slugs`.sluggable_id = `pages`.id AND `slugs`.sluggable_type = 'Page'WHERE (slugs.id IS NULL) ORDER BY pages.id ASC LIMIT 100[0m
+  [4;36;1mPage Load Including Associations (10.4ms)[0m   [0;1mSELECT `pages`.`id` AS t0_r0, `pages`.`title` AS t0_r1, `pages`.`body` AS t0_r2, `pages`.`cached_slug` AS t0_r3, `pages`.`created_at` AS t0_r4, `pages`.`updated_at` AS t0_r5, `slugs`.`id` AS t1_r0, `slugs`.`name` AS t1_r1, `slugs`.`sluggable_id` AS t1_r2, `slugs`.`sequence` AS t1_r3, `slugs`.`sluggable_type` AS t1_r4, `slugs`.`scope` AS t1_r5, `slugs`.`created_at` AS t1_r6 FROM `pages` LEFT OUTER JOIN `slugs` ON `slugs`.sluggable_id = `pages`.id AND `slugs`.sluggable_type = 'Page'WHERE (slugs.id IS NULL) AND `pages`.id IN (1, 2) ORDER BY pages.id ASC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSlug Load (0.4ms)[0m   [0;1mSELECT * FROM `slugs` WHERE (`slugs`.sluggable_id = 1 AND `slugs`.sluggable_type = 'Page') ORDER BY id DESC, id DESC LIMIT 1[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSlug Load (0.3ms)[0m   [0mSELECT * FROM `slugs` WHERE (sluggable_type = 'Page') [0m
+  [4;36;1mPage Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Update (0.5ms)[0m   [0mUPDATE `pages` SET cached_slug = NULL [0m
+  [4;36;1mSlug Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `slugs`[0m
+  [4;35;1mPage Load IDs For Limited Eager Loading (0.4ms)[0m   [0mSELECT DISTINCT `pages`.id FROM `pages` LEFT OUTER JOIN `slugs` ON `slugs`.sluggable_id = `pages`.id AND `slugs`.sluggable_type = 'Page'WHERE (slugs.id IS NULL) ORDER BY pages.id ASC LIMIT 100[0m
+  [4;36;1mPage Load Including Associations (0.3ms)[0m   [0;1mSELECT `pages`.`id` AS t0_r0, `pages`.`title` AS t0_r1, `pages`.`body` AS t0_r2, `pages`.`cached_slug` AS t0_r3, `pages`.`created_at` AS t0_r4, `pages`.`updated_at` AS t0_r5, `slugs`.`id` AS t1_r0, `slugs`.`name` AS t1_r1, `slugs`.`sluggable_id` AS t1_r2, `slugs`.`sequence` AS t1_r3, `slugs`.`sluggable_type` AS t1_r4, `slugs`.`scope` AS t1_r5, `slugs`.`created_at` AS t1_r6 FROM `pages` LEFT OUTER JOIN `slugs` ON `slugs`.sluggable_id = `pages`.id AND `slugs`.sluggable_type = 'Page'WHERE (slugs.id IS NULL) AND `pages`.id IN (1, 2) ORDER BY pages.id ASC[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSlug Load (0.4ms)[0m   [0;1mSELECT * FROM `slugs` WHERE (`slugs`.sluggable_id = 1 AND `slugs`.sluggable_type = 'Page') ORDER BY id DESC, id DESC LIMIT 1[0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+  [4;36;1mSlug Load (0.3ms)[0m   [0;1mSELECT * FROM `slugs` WHERE (`slugs`.`scope` IS NULL AND `slugs`.`name` = 'libraries') AND (`slugs`.sluggable_id = 1 AND `slugs`.sluggable_type = 'Page') ORDER BY id DESC[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM `slugs` WHERE (`slugs`.`scope` IS NULL AND `slugs`.`sluggable_type` = 'Page' AND `slugs`.`name` = 'libraries') [0m
+  [4;36;1mSlug Create (25.3ms)[0m   [0;1mINSERT INTO `slugs` (`name`, `scope`, `sequence`, `created_at`, `sluggable_type`, `sluggable_id`) VALUES('libraries', NULL, 1, '2010-08-12 19:22:07', 'Page', 1)[0m
+  [4;35;1mSlug Load (0.4ms)[0m   [0mSELECT * FROM `slugs` WHERE (`slugs`.sluggable_id = 1 AND `slugs`.sluggable_type = 'Page') ORDER BY id DESC[0m
+  [4;36;1mPage Update (0.3ms)[0m   [0;1mUPDATE `pages` SET `updated_at` = '2010-08-12 19:22:07', `cached_slug` = 'libraries' WHERE `id` = 1[0m
+  [4;35;1mSQL (25.0ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSlug Load (0.4ms)[0m   [0mSELECT * FROM `slugs` WHERE (`slugs`.sluggable_id = 2 AND `slugs`.sluggable_type = 'Page') ORDER BY id DESC, id DESC LIMIT 1[0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 2) [0m
+  [4;35;1mSlug Load (0.3ms)[0m   [0mSELECT * FROM `slugs` WHERE (`slugs`.`scope` IS NULL AND `slugs`.`name` = 'this-is-a-page') AND (`slugs`.sluggable_id = 2 AND `slugs`.sluggable_type = 'Page') ORDER BY id DESC[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM `slugs` WHERE (`slugs`.`scope` IS NULL AND `slugs`.`sluggable_type` = 'Page' AND `slugs`.`name` = 'this-is-a-page') [0m
+  [4;35;1mSlug Create (0.2ms)[0m   [0mINSERT INTO `slugs` (`name`, `scope`, `sequence`, `created_at`, `sluggable_type`, `sluggable_id`) VALUES('this-is-a-page', NULL, 1, '2010-08-12 19:22:07', 'Page', 2)[0m
+  [4;36;1mSlug Load (0.3ms)[0m   [0;1mSELECT * FROM `slugs` WHERE (`slugs`.sluggable_id = 2 AND `slugs`.sluggable_type = 'Page') ORDER BY id DESC[0m
+  [4;35;1mPage Update (0.3ms)[0m   [0mUPDATE `pages` SET `updated_at` = '2010-08-12 19:22:07', `cached_slug` = 'this-is-a-page' WHERE `id` = 2[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mPage Load IDs For Limited Eager Loading (23.3ms)[0m   [0mSELECT DISTINCT `pages`.id FROM `pages` LEFT OUTER JOIN `slugs` ON `slugs`.sluggable_id = `pages`.id AND `slugs`.sluggable_type = 'Page'WHERE (slugs.id IS NULL and pages.id > 2) ORDER BY pages.id ASC LIMIT 100[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:22:14) [GET]
+  [4;35;1mPage Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mPage Load (1.0ms)[0m   [0;1mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+Completed in 53ms (View: 36, DB: 3) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#show (for 127.0.0.1 at 2010-08-12 12:22:18) [GET]
+  Parameters: {"id"=>"this-is-a-page"}
+  [4;36;1mPage Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`cached_slug` = 'this-is-a-page') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering pages/show
+Completed in 122ms (View: 13, DB: 2) | 200 OK [http://localhost/pages/this-is-a-page]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:22:20) [GET]
+  [4;35;1mPage Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+Completed in 26ms (View: 10, DB: 2) | 200 OK [http://localhost/pages]
