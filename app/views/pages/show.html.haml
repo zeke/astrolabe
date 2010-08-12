@@ -1,0 +1,7 @@
+%h1= @page.title
+
+%p= auto_link(@page.body)
+
+%ul.options
+  %li.first= link_to '&larr; Pages', pages_path
+  %li.last= link_to 'Edit this Page', edit_page_path(@page)

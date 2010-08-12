@@ -1,0 +1,430 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (383.5ms)[0m   [0;1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (4.7ms)[0m   [0mSHOW KEYS FROM `schema_migrations`[0m
+  [4;36;1mSQL (301.9ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreatePages (20100812182537)
+  [4;35;1mSQL (121.1ms)[0m   [0mCREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `cached_slug` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `pages`[0m
+  [4;35;1mSQL (136.9ms)[0m   [0mCREATE INDEX `index_pages_on_cached_slug` ON `pages` (`cached_slug`)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `pages`[0m
+  [4;35;1mSQL (184.1ms)[0m   [0mCREATE INDEX `index_pages_on_title` ON `pages` (`title`)[0m
+  [4;36;1mSQL (25.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100812182537')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (25.4ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `pages`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `pages`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 11:56:50) [GET]
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+Completed in 172ms (View: 161, DB: 1) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 11:59:58) [GET]
+  [4;35;1mPage Load (0.5ms)[0m   [0mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+Completed in 118ms (View: 106, DB: 1) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:00:22) [GET]
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+Completed in 24ms (View: 13, DB: 0) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:00:46) [GET]
+  [4;35;1mPage Load (1.4ms)[0m   [0mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+Completed in 34ms (View: 16, DB: 1) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#new (for 127.0.0.1 at 2010-08-12 12:00:51) [GET]
+  [4;35;1mPage Columns (37.3ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Rendering template within layouts/application
+Rendering pages/new
+
+ActionView::TemplateError (undefined method `inputs' for nil:NilClass) on line #5 of app/views/pages/_form.html.haml:
+2: 
+3:   = f.error_messages
+4:   
+5:   - form.inputs do
+6:     = form.input :title
+7:     = form.input :body
+8:   - form.buttons do
+
+    app/views/pages/_form.html.haml:5:in `_run_haml_app47views47pages47_form46html46haml_locals_form_object_page'
+    haml (3.0.11) rails/./lib/haml/helpers/action_view_mods.rb:225:in `call'
+    haml (3.0.11) rails/./lib/haml/helpers/action_view_mods.rb:225:in `form_for'
+    haml (3.0.11) lib/haml/helpers.rb:588:in `call'
+    haml (3.0.11) lib/haml/helpers.rb:588:in `haml_bind_proc'
+    haml (3.0.11) rails/./lib/haml/helpers/action_view_mods.rb:231:in `form_for'
+    formtastic (0.9.10) rails/./lib/formtastic.rb:1741:in `semantic_form_for'
+    formtastic (0.9.10) rails/./lib/formtastic.rb:1719:in `with_custom_field_error_proc'
+    formtastic (0.9.10) rails/./lib/formtastic.rb:1740:in `semantic_form_for'
+    app/views/pages/_form.html.haml:1:in `_run_haml_app47views47pages47_form46html46haml_locals_form_object_page'
+    haml (3.0.11) rails/./lib/haml/helpers/action_view_mods.rb:11:in `render'
+    haml (3.0.11) lib/haml/helpers.rb:90:in `non_haml'
+    haml (3.0.11) rails/./lib/haml/helpers/action_view_mods.rb:11:in `render'
+    app/views/pages/new.html.haml:3:in `_run_haml_app47views47pages47new46html46haml'
+    haml (3.0.11) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.11) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    app/controllers/pages_controller.rb:48:in `new'
+    compass (0.10.2) lib/compass/app_integration/rails/actionpack2/action_controller.rb:7:in `process'
+    haml (3.0.11) rails/./lib/sass/plugin/rack.rb:41:in `call'
+
+Rendered rescues/_trace (223.4ms)
+Rendered rescues/_request_and_response (23.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#new (for 127.0.0.1 at 2010-08-12 12:01:09) [GET]
+  [4;35;1mPage Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Rendering template within layouts/application
+Rendering pages/new
+Rendered pages/_form (14.3ms)
+Completed in 37ms (View: 24, DB: 1) | 200 OK [http://localhost/pages/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#create (for 127.0.0.1 at 2010-08-12 12:01:54) [POST]
+  Parameters: {"commit"=>"Save", "authenticity_token"=>"Q96wpzVlxpM2vz34DaXdLp/GErC0JLqKpJKvgninR90=", "page"=>{"body"=>"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus vitae risus vitae lorem iaculis placerat. Aliquam sit amet felis. Etiam congue. Donec risus risus, pretium ac, tincidunt eu, tempor eu, quam. Morbi blandit mollis magna. Suspendisse eu tortor. Donec vitae felis nec ligula blandit rhoncus. Ut a pede ac neque mattis facilisis. Nulla nunc ipsum, sodales vitae, hendrerit non, imperdiet ac, ante. Morbi sit amet mi. Ut magna. Curabitur id est. Nulla velit. Sed consectetuer sodales justo. Aliquam dictum gravida libero. Sed eu turpis. Nunc id lorem. Aenean consequat tempor mi. Phasellus in neque. Nunc fermentum convallis ligula.\r\n\r\nSuspendisse in nulla. Nunc eu ipsum tincidunt risus pellentesque fringilla. Integer iaculis pharetra eros. Nam ut sapien quis arcu ullamcorper cursus. Vestibulum tempor nisi rhoncus eros. Sed iaculis ultricies tellus. Cras pellentesque erat eu urna. Cras malesuada. Quisque congue ultricies neque. Nullam a nisl. Sed convallis turpis a ante. Morbi eu justo sed tortor euismod porttitor. Aenean ut lacus. Maecenas nibh eros, dapibus at, pellentesque in, auctor a, enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam congue pede a ipsum. Sed libero quam, sodales eget, venenatis non, cursus vel, velit. In vulputate.\r\n\r\nIn vehicula. Aenean quam mauris, vehicula non, suscipit at, venenatis sed, arcu. Etiam ornare fermentum felis. Donec ligula metus, placerat quis, blandit at, congue molestie, ante. Donec viverra nibh et dolor. Sed elementum, nunc ac gravida pulvinar, libero ligula vestibulum urna, eget luctus eros ipsum ut velit. Vestibulum at diam. Suspendisse hendrerit. Sed facilisis libero pretium nisl. Morbi eget urna ut mi egestas aliquet. Donec interdum, urna eget semper ultrices, nibh sapien laoreet massa, at laoreet nulla metus sit amet nunc. In augue. Etiam sit amet sapien. Aliquam nulla mi, tincidunt a, ullamcorper pharetra, mollis eu, purus. Suspendisse auctor nunc a dolor. Donec elit diam, fringilla nec, cursus a, dapibus ut, justo. Maecenas rhoncus lacinia mi. Sed tempus leo in risus. Quisque vitae est. Integer eu mi vel justo lacinia posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec pretium auctor mauris. Cras at risus. Vestibulum ligula purus, venenatis varius, tincidunt aliquam, volutpat ut, felis. In nulla. Suspendisse magna. Fusce ac tortor. Morbi semper hendrerit purus. Donec scelerisque erat quis magna. Vivamus interdum metus at tellus.\r\n\r\nNam molestie suscipit arcu.", "title"=>"Libraries"}}
+  [4;35;1mPage Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPage Create (0.3ms)[0m   [0mINSERT INTO `pages` (`created_at`, `title`, `body`, `updated_at`, `cached_slug`) VALUES('2010-08-12 19:01:54', 'Libraries', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Vivamus vitae risus vitae lorem iaculis placerat. Aliquam sit amet felis. Etiam congue. Donec risus risus, pretium ac, tincidunt eu, tempor eu, quam. Morbi blandit mollis magna. Suspendisse eu tortor. Donec vitae felis nec ligula blandit rhoncus. Ut a pede ac neque mattis facilisis. Nulla nunc ipsum, sodales vitae, hendrerit non, imperdiet ac, ante. Morbi sit amet mi. Ut magna. Curabitur id est. Nulla velit. Sed consectetuer sodales justo. Aliquam dictum gravida libero. Sed eu turpis. Nunc id lorem. Aenean consequat tempor mi. Phasellus in neque. Nunc fermentum convallis ligula.\r\n\r\nSuspendisse in nulla. Nunc eu ipsum tincidunt risus pellentesque fringilla. Integer iaculis pharetra eros. Nam ut sapien quis arcu ullamcorper cursus. Vestibulum tempor nisi rhoncus eros. Sed iaculis ultricies tellus. Cras pellentesque erat eu urna. Cras malesuada. Quisque congue ultricies neque. Nullam a nisl. Sed convallis turpis a ante. Morbi eu justo sed tortor euismod porttitor. Aenean ut lacus. Maecenas nibh eros, dapibus at, pellentesque in, auctor a, enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam congue pede a ipsum. Sed libero quam, sodales eget, venenatis non, cursus vel, velit. In vulputate.\r\n\r\nIn vehicula. Aenean quam mauris, vehicula non, suscipit at, venenatis sed, arcu. Etiam ornare fermentum felis. Donec ligula metus, placerat quis, blandit at, congue molestie, ante. Donec viverra nibh et dolor. Sed elementum, nunc ac gravida pulvinar, libero ligula vestibulum urna, eget luctus eros ipsum ut velit. Vestibulum at diam. Suspendisse hendrerit. Sed facilisis libero pretium nisl. Morbi eget urna ut mi egestas aliquet. Donec interdum, urna eget semper ultrices, nibh sapien laoreet massa, at laoreet nulla metus sit amet nunc. In augue. Etiam sit amet sapien. Aliquam nulla mi, tincidunt a, ullamcorper pharetra, mollis eu, purus. Suspendisse auctor nunc a dolor. Donec elit diam, fringilla nec, cursus a, dapibus ut, justo. Maecenas rhoncus lacinia mi. Sed tempus leo in risus. Quisque vitae est. Integer eu mi vel justo lacinia posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec pretium auctor mauris. Cras at risus. Vestibulum ligula purus, venenatis varius, tincidunt aliquam, volutpat ut, felis. In nulla. Suspendisse magna. Fusce ac tortor. Morbi semper hendrerit purus. Donec scelerisque erat quis magna. Vivamus interdum metus at tellus.\r\n\r\nNam molestie suscipit arcu.', '2010-08-12 19:01:54', NULL)[0m
+  [4;36;1mSQL (59.5ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/pages/1
+Completed in 79ms (DB: 61) | 302 Found [http://localhost/pages]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#show (for 127.0.0.1 at 2010-08-12 12:01:54) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPage Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Load (1.4ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering pages/show
+Completed in 43ms (View: 15, DB: 3) | 200 OK [http://localhost/pages/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:02:01) [GET]
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;36;1mPage Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+Completed in 32ms (View: 20, DB: 2) | 200 OK [http://localhost/pages]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:02:34) [GET]
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;35;1mPage Columns (61.3ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Completed in 94ms (View: 21, DB: 62) | 200 OK [http://localhost/pages]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:03:19) [GET]
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;36;1mPage Columns (21.5ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+Completed in 52ms (View: 19, DB: 22) | 200 OK [http://localhost/pages]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:03:30) [GET]
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;35;1mPage Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Completed in 22ms (View: 8, DB: 2) | 200 OK [http://localhost/pages]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:03:48) [GET]
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;36;1mPage Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+Completed in 21ms (View: 8, DB: 2) | 200 OK [http://localhost/pages]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:04:01) [GET]
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;35;1mPage Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Completed in 21ms (View: 8, DB: 2) | 200 OK [http://localhost/pages]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:04:12) [GET]
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;36;1mPage Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+Completed in 20ms (View: 8, DB: 2) | 200 OK [http://localhost/pages]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:04:53) [GET]
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;35;1mPage Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Completed in 21ms (View: 8, DB: 2) | 200 OK [http://localhost/pages]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:05:03) [GET]
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;36;1mPage Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+Completed in 21ms (View: 9, DB: 2) | 200 OK [http://localhost/pages]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:05:26) [GET]
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;35;1mPage Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Completed in 21ms (View: 8, DB: 2) | 200 OK [http://localhost/pages]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:05:38) [GET]
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;36;1mPage Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+Completed in 21ms (View: 8, DB: 2) | 200 OK [http://localhost/pages]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:06:24) [GET]
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;35;1mPage Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Completed in 21ms (View: 8, DB: 2) | 200 OK [http://localhost/pages]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#show (for 127.0.0.1 at 2010-08-12 12:06:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPage Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering pages/show
+Completed in 18ms (View: 5, DB: 2) | 200 OK [http://localhost/pages/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:06:52) [GET]
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;35;1mPage Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Completed in 22ms (View: 8, DB: 2) | 200 OK [http://localhost/pages]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#new (for 127.0.0.1 at 2010-08-12 12:06:56) [GET]
+  [4;35;1mPage Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Rendering template within layouts/application
+Rendering pages/new
+Rendered pages/_form (61.3ms)
+Completed in 82ms (View: 69, DB: 1) | 200 OK [http://localhost/pages/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#new (for 127.0.0.1 at 2010-08-12 12:08:22) [GET]
+  [4;35;1mPage Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Rendering template within layouts/application
+Rendering pages/new
+Rendered pages/_form (13.8ms)
+Completed in 55ms (View: 43, DB: 1) | 200 OK [http://localhost/pages/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#new (for 127.0.0.1 at 2010-08-12 12:08:37) [GET]
+  [4;35;1mPage Columns (1.6ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Rendering template within layouts/application
+Rendering pages/new
+Rendered pages/_form (12.1ms)
+Completed in 28ms (View: 15, DB: 2) | 200 OK [http://localhost/pages/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#new (for 127.0.0.1 at 2010-08-12 12:08:52) [GET]
+  [4;35;1mPage Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Rendering template within layouts/application
+Rendering pages/new
+Rendered pages/_form (12.5ms)
+Completed in 28ms (View: 16, DB: 1) | 200 OK [http://localhost/pages/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#new (for 127.0.0.1 at 2010-08-12 12:09:25) [GET]
+  [4;35;1mPage Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Rendering template within layouts/application
+Rendering pages/new
+Rendered pages/_form (14.2ms)
+Completed in 29ms (View: 17, DB: 1) | 200 OK [http://localhost/pages/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#new (for 127.0.0.1 at 2010-08-12 12:10:02) [GET]
+  [4;35;1mPage Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Rendering template within layouts/application
+Rendering pages/new
+Rendered pages/_form (12.5ms)
+Completed in 27ms (View: 15, DB: 1) | 200 OK [http://localhost/pages/new]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#create (for 127.0.0.1 at 2010-08-12 12:10:14) [POST]
+  Parameters: {"commit"=>"Save", "authenticity_token"=>"Q96wpzVlxpM2vz34DaXdLp/GErC0JLqKpJKvgninR90=", "page"=>{"body"=>"This is its body", "title"=>"This is a page"}}
+  [4;35;1mPage Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mPage Create (0.3ms)[0m   [0mINSERT INTO `pages` (`created_at`, `title`, `body`, `updated_at`, `cached_slug`) VALUES('2010-08-12 19:10:14', 'This is a page', 'This is its body', '2010-08-12 19:10:14', NULL)[0m
+  [4;36;1mSQL (16.1ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://localhost:3000/pages/2
+Completed in 36ms (DB: 18) | 302 Found [http://localhost/pages]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#show (for 127.0.0.1 at 2010-08-12 12:10:14) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mPage Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Load (1.4ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 2) [0m
+Rendering template within layouts/application
+Rendering pages/show
+Completed in 27ms (View: 6, DB: 3) | 200 OK [http://localhost/pages/2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:10:17) [GET]
+  [4;35;1mPage Load (1.3ms)[0m   [0mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;36;1mPage Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+Completed in 27ms (View: 12, DB: 3) | 200 OK [http://localhost/pages]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:11:33) [GET]
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;35;1mPage Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Completed in 23ms (View: 10, DB: 2) | 200 OK [http://localhost/pages]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:11:48) [GET]
+  [4;35;1mPage Load (0.5ms)[0m   [0mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;36;1mPage Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+Completed in 24ms (View: 11, DB: 2) | 200 OK [http://localhost/pages]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:13:11) [GET]
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;35;1mPage Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Completed in 23ms (View: 11, DB: 2) | 200 OK [http://localhost/pages]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:13:33) [GET]
+  [4;35;1mPage Load (0.4ms)[0m   [0mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;36;1mPage Columns (1.2ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+Completed in 23ms (View: 10, DB: 2) | 200 OK [http://localhost/pages]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#edit (for 127.0.0.1 at 2010-08-12 12:13:46) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPage Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Load (0.7ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering pages/edit
+Rendered pages/_form (57.3ms)
+Completed in 90ms (View: 77, DB: 2) | 200 OK [http://localhost/pages/1/edit]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#show (for 127.0.0.1 at 2010-08-12 12:13:48) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPage Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering pages/show
+Completed in 27ms (View: 14, DB: 2) | 200 OK [http://localhost/pages/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#index (for 127.0.0.1 at 2010-08-12 12:13:50) [GET]
+  [4;36;1mPage Load (0.4ms)[0m   [0;1mSELECT * FROM `pages` LIMIT 0, 50[0m
+Rendering template within layouts/application
+Rendering pages/index
+  [4;35;1mPage Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+Completed in 23ms (View: 10, DB: 2) | 200 OK [http://localhost/pages]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#show (for 127.0.0.1 at 2010-08-12 12:13:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPage Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering pages/show
+Completed in 19ms (View: 5, DB: 2) | 200 OK [http://localhost/pages/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#edit (for 127.0.0.1 at 2010-08-12 12:13:55) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPage Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `pages`[0m
+  [4;35;1mPage Load (0.3ms)[0m   [0mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering pages/edit
+Rendered pages/_form (15.2ms)
+Completed in 33ms (View: 20, DB: 2) | 200 OK [http://localhost/pages/1/edit]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PagesController#show (for 127.0.0.1 at 2010-08-12 12:16:44) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mPage Columns (20.3ms)[0m   [0mSHOW FIELDS FROM `pages`[0m
+  [4;36;1mPage Load (0.3ms)[0m   [0;1mSELECT * FROM `pages` WHERE (`pages`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering pages/show
+Completed in 63ms (View: 29, DB: 21) | 200 OK [http://localhost/pages/1]

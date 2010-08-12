@@ -1,0 +1,8 @@
+%h1 Edit
+
+= render :partial => "form", :locals => {:page => @page}
+
+%ul.options
+  %li.first= link_to 'List Pages', pages_path
+  %li= link_to 'Show', @page
+  %li.last= link_to 'Destroy', @page, :confirm => 'Are you sure?', :method => :delete  

@@ -1,0 +1,11 @@
+.DS_STORE
+log/*
+tmp/*
+config/database.yml
+db/*.sqlite3
+*~
+*.swp
+db/schema.rb
+coverage/*
+coverage/**/*
+coverage.data

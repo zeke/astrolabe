@@ -1,0 +1,65 @@
+body {
+  padding: 15px; }
+
+a {
+  color: #af0300; }
+
+p {
+  color: #444444; }
+  p a {
+    color: #af0300; }
+
+table thead tr th {
+  font-weight: normal;
+  color: #888888;
+  border-bottom: 1px solid #666666;
+  padding: 0;
+  text-align: left; }
+table tbody tr td {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 4px 0; }
+  table tbody tr td ul.options li {
+    font-size: 0.8em; }
+
+ul.options {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  float: none;
+  clear: both;
+  overflow: hidden; }
+  ul.options li {
+    display: block;
+    float: left;
+    padding: 0 6px;
+    border-right: 1px solid #dddddd; }
+    ul.options li.first {
+      padding-left: none; }
+    ul.options li.last {
+      padding-right: none;
+      border-right: none; }
+    ul.options li a {
+      color: #777777;
+      text-decoration: none; }
+      ul.options li a:hover {
+        color: #f2570a; }
+
+form.formtastic {
+  margin: 0;
+  padding: 0; }
+  form.formtastic fieldset {
+    margin: 0;
+    padding: 0;
+    border: none; }
+    form.formtastic fieldset ol {
+      margin: 0;
+      padding: 0;
+      list-style: none; }
+      form.formtastic fieldset ol li label {
+        display: block; }
+      form.formtastic fieldset ol li textarea {
+        width: 800px; }
+      form.formtastic fieldset ol li.string input {
+        width: 794px;
+        padding: 3px;
+        font-size: 1.1em; }

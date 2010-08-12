@@ -1,0 +1,9 @@
+development:
+  adapter: mysql
+  database: astrolabe_development
+  username: root
+
+test:
+  adapter: mysql
+  database: astrolabe_test
+  username: root

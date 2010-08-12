@@ -1,0 +1,8 @@
+rails --version 2.3.5
+rack --version 1.0.1
+haml --version 3.0.11
+jrails --version 0.6.0
+formtastic --version 0.9.10 --ignore-dependencies
+friendly_id --version 3.0.4
+will_paginate --version 2.3.12
+compass --version 0.10.2

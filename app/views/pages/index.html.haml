@@ -1,0 +1,19 @@
+%h1 Pages
+
+%table
+  %thead
+    %tr
+      %th{:width => 500} Page
+      %th{:width => 200} Options
+  
+  %tbody
+    - @pages.each do |page|
+      %tr
+        %td= link_to(page.title, page)
+        %td
+          %ul.options
+            %li.first= link_to 'Edit', edit_page_path(page)
+            %li.last= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete
+
+%ul.options
+  %li.first.last= link_to 'New page', new_page_path
